@@ -130,4 +130,7 @@ export default defineComponent({
   .info-modal {
     padding: 20px;
   }
+  .info-modal {
+    color: white;
+  }
 </style>
