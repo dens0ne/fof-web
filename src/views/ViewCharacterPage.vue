@@ -6,7 +6,7 @@
           <ion-back-button :text="getBackButtonText()" default-href="/"></ion-back-button>
         </ion-buttons>
         <div class="header-wrapper">
-          <img class ="header-child char-avatar-img" :src="require('../../public/assets/avatars/' + framedata.character.name.replace(/\s/g,'').toLowerCase() + '.png')">
+          <img class ="header-child char-avatar-img" :src="'../../public/assets/avatars/' + framedata.character.name.replace(/\s/g,'').toLowerCase() + '.png'">
           <h1 class="header-child title">{{ framedata.character.name }}</h1>
         </div>
       </ion-toolbar>
@@ -18,7 +18,6 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" v-if="framedata.character">
-      <vue-horizontal :button="false" scroll snap="none">
         <ion-list>
           <ion-accordion-group :multiple="true" :value="framedata.types" style="min-width:600px">
             <ion-accordion toggleIconSlot="start" :value="type" v-for="type in framedata.types" :key="type">
@@ -52,7 +51,6 @@
             </ion-accordion>
           </ion-accordion-group>
         </ion-list>
-      </vue-horizontal>
     </ion-content>
   </ion-page>
 </template>
@@ -63,7 +61,6 @@ import { IonSearchbar, IonLabel, IonList, IonAccordion, IonAccordionGroup, IonBa
 import { getCharacter } from '../data/characters';
 import { getMoves } from '../data/characters';
 import { defineComponent } from 'vue';
-import VueHorizontal from "vue-horizontal";
 import uniq from 'lodash/uniq'
 
 export default defineComponent({
@@ -184,7 +181,6 @@ export default defineComponent({
     IonItem,
     IonPage,
     IonToolbar,
-    VueHorizontal,
   },
 });
 let getSiblings = function (e) {
