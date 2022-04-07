@@ -1,2 +1,2 @@
 # Frame of fighters
-Ionic based mobile app 
+Web version of the mobile app
