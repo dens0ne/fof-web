@@ -3,7 +3,7 @@
     <ion-label class="ion-text-wrap">
       <ion-item>
         <ion-avatar class="char-avatar" slot="start">
-          <img class ="char-avatar-img" :src="'../../public/assets/avatars/' + character.name.replace(/\s/g,'').toLowerCase() + '.png'">
+          <img class ="char-avatar-img" :src="'../../assets/avatars/' + character.name.replace(/\s/g,'').toLowerCase() + '.png'">
         </ion-avatar>
         <h2>
           <ion-label class="char-name">{{ character.name }}</ion-label>

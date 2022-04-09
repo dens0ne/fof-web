@@ -6,7 +6,7 @@
           <ion-back-button :text="getBackButtonText()" default-href="/"></ion-back-button>
         </ion-buttons>
         <div class="header-wrapper">
-          <img class ="header-child char-avatar-img" :src="'../../public/assets/avatars/' + framedata.character.name.replace(/\s/g,'').toLowerCase() + '.png'">
+          <img class ="header-child char-avatar-img" :src="'../../assets/avatars/' + framedata.character.name.replace(/\s/g,'').toLowerCase() + '.png'">
           <h1 class="header-child title">{{ framedata.character.name }}</h1>
         </div>
       </ion-toolbar>
@@ -18,6 +18,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true" v-if="framedata.character">
+      <vue-horizontal :button="false" scroll snap="none">
         <ion-list>
           <ion-accordion-group :multiple="true" :value="framedata.types" style="min-width:600px">
             <ion-accordion toggleIconSlot="start" :value="type" v-for="type in framedata.types" :key="type">
@@ -27,30 +28,27 @@
               <ion-list slot="content">
                 <ion-item>
                   <table class="moves-table" style="width:100%">
-                    <thead>
-                      <tr class="table-headers">
-                        <th v-for="header in sortedHeaders" :key="header">{{header}}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="table-content"  v-bind:class="(index %2 == 0) ? 'even-row' : ''" v-for="(item, index) in filterByMoveType(framedata, type)" :key="item.input">
-                        <td class="input-field">{{item.input}}</td>
-                        <td>{{item.startup}}</td>
-                        <td :class="getNumberColor(item.block)">{{item.block}}</td>
-                        <td :class="getNumberColor(item.hit)">{{item.hit}}</td>
-                        <td>{{item.damage}}</td>
-                        <td>{{item.stun}}</td>
-                        <td>{{item.guardDmg}}</td>
-                        <td>{{item.hits}}</td>
-                        <td>{{item.notes}}</td>
-                      </tr>
-                    </tbody>
+                    <tr class="table-headers">
+                      <th v-for="header in sortedHeaders" :key="header">{{header}}</th>
+                    </tr>
+                    <tr class="table-content"  v-bind:class="(index %2 == 0) ? 'even-row' : ''" v-for="(item, index) in filterByMoveType(framedata, type)" :key="item.input">
+                      <td class="input-field">{{item.input}}</td>
+                      <td>{{item.startup}}</td>
+                      <td :class="getNumberColor(item.block)">{{item.block}}</td>
+                      <td :class="getNumberColor(item.hit)">{{item.hit}}</td>
+                      <td>{{item.damage}}</td>
+                      <td>{{item.stun}}</td>
+                      <td>{{item.guardDmg}}</td>
+                      <td>{{item.hits}}</td>
+                      <td>{{item.notes}}</td>
+                    </tr>
                   </table>
                 </ion-item>
               </ion-list>
             </ion-accordion>
           </ion-accordion-group>
         </ion-list>
+      </vue-horizontal>
     </ion-content>
   </ion-page>
 </template>
@@ -61,6 +59,7 @@ import { IonSearchbar, IonLabel, IonList, IonAccordion, IonAccordionGroup, IonBa
 import { getCharacter } from '../data/characters';
 import { getMoves } from '../data/characters';
 import { defineComponent } from 'vue';
+import VueHorizontal from "vue-horizontal";
 import uniq from 'lodash/uniq'
 
 export default defineComponent({
@@ -181,6 +180,7 @@ export default defineComponent({
     IonItem,
     IonPage,
     IonToolbar,
+    VueHorizontal,
   },
 });
 let getSiblings = function (e) {

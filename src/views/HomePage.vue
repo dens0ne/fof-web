@@ -3,7 +3,7 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <div class="header-wrapper">
-          <img class ="header-child logo" src='../../public/assets/icon/foflogo.png'>
+          <img class ="header-child logo" src='../../assets/icon/foflogo.png'>
           <ion-title class="header-child title">Frame of fighters</ion-title>
           <div class=header-child>
             <ion-button color="dark" class="credits-button" size="small" @click="setOpen(true)">
